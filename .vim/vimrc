@@ -1,0 +1,66 @@
+" Basic options
+"
+" Move "Viminfo" file
+set viminfo+=n~/.vim/viminfo
+
+" Line numbers, colorscheme
+set number
+colorscheme ron 
+syntax on
+
+" Shift, tabs and ident
+" This is the official Python convention
+" (http://www.python.org/dev/peps/pep-0008/)
+set ai
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set smarttab
+
+" Fix tmux background bag
+set ttyfast
+if &term =~ '256color'
+    " disable Background color erease
+	set t_ut=
+endif
+
+" Status line
+set laststatus=2
+set statusline=
+set statusline+=%-3.3n\                      " buffer number
+set statusline+=%f\                          " filename
+set statusline+=%h%m%r%w                     " status flags
+set statusline+=\[%{strlen(&ft)?&ft:'none'}] " file type
+set statusline+=%=                           " right align remainder
+set statusline+=0x%-8B                       " character value
+set statusline+=%-14(%l,%c%V%)               " line, character
+set statusline+=%<%P                         " file position
+
+" Show line number, cursor position
+set ruler
+
+" Display incomplee commands
+set showcmd
+
+" Show autocomplete menus
+set wildmenu
+
+" Show editing mode
+set showmode
+
+" Folding
+set foldenable
+set fdm=indent
+
+" Using Space for folding
+nnoremap <space> za
+
+" ===== Plugin section ====
+"
+" Pathogen
+execute pathogen#infect()
+filetype plugin indent on
+" NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+let g:NERDTreeWinSize=20
