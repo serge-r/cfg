@@ -1,3 +1,0 @@
-penalty_logs 33
-bills_list_file 170
-gpstrack 253
