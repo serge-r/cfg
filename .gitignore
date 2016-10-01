@@ -2,4 +2,5 @@
 !.gitignore
 !.bashrc
 !.vim
+/.vim/viminfo
 !.tmux.conf
